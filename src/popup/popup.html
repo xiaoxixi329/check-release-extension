@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./popup.css">
+    <link href="./bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="alertPanel hide" id="alertInfo"></div>
+    <div class="container">
+      <div class="flex">
+        <span class="flex">
+          <label style="min-width: 70px;">AppId：</label>
+          <input id="appId" type="text" class="form-control">
+        </span>
+        <span class="flex">
+          <label style="min-width: 70px;">环境：</label>
+          <select id="env" class="form-control">
+            <option value="work">work</option>
+            <option value="test">test</option>
+            <option value="ut">ut</option>
+            <option value="prod">prod</option>
+          </select>
+        </span>
+        <span>
+          <button id="search" class="btn btn-outline-primary" type="button">检查</button>
+        </span>
+      </div>
+      <div class="base-info">
+        <h4>发布基本信息</h4>
+        <ul>
+          <li>发布时间：</li>
+          <li>发布站点：</li>
+          <li>发布环境：</li>
+          <li>发布人：</li>
+        </ul>
+      </div>
+      <div class="check-result">
+        <h4>检查结果</h4>
+        <span id="result"></span>
+        <div class="details">
+          异常步骤：
+          异常信息：
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../js/index.js"></script>
+</html>

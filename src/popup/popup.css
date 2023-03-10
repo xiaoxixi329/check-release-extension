@@ -1,0 +1,15 @@
+body {
+  padding: 10px 0;
+  min-height: 500px;
+  min-width: 800px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hide {
+  display: none !important;
+}
