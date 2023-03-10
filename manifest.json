@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Check Release",
+  "version": "2.0",
+  "description": "发布系统构建结果监测",
+  "icons": {
+    "16": "src/icon.png",
+    "32": "src/icon.png",
+    "48": "src/icon.png",
+    "128": "src/icon.png"
+  },
+  "action": {
+    "default_popup": "src/html/popup.html"
+  },
+  "background": {
+    "service_worker": "src/js/background.js"
+  },
+  "permissions": [
+    "webRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ]
+}
