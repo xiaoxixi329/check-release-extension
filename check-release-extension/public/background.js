@@ -1,14 +1,9 @@
 /* eslint-disable no-undef */
-chrome.windows.authorization = null
-// let authorization = null
-
 // 拦截接口获取token
 chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => {
   const auth = requestHeaders?.find(item => item.name === 'Authorization')
   if(auth) {
-    // authorization = auth.value
-    chrome.windows.authorization = auth.value
-    // chrome.storage.sync.set({ authorization: auth.value});
+    chrome.storage.sync.set({ authorization: auth.value});
   }
   return { requestHeaders }
 }, {
@@ -17,6 +12,15 @@ chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => {
   ],
 }, ["requestHeaders"])
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  sendResponse(chrome.windows.authorization)
-})
+// 拦截开始发布接口
+chrome.webRequest.onBeforeRequest.addListener((data) => {
+  console.log(JSON.parse(ab2str(data.requestBody.raw[0].bytes)));
+}, {
+  urls: [
+    'https://developer-bff.tuhuyun.cn/web_api/deploy/taskStart'
+  ],
+}, ["requestBody"])
+
+function ab2str(buf) {
+  return String.fromCharCode.apply(null, new Uint8Array(buf))
+}
