@@ -36,9 +36,9 @@
             <el-option label="prod" value="prod"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="id:">
+        <!-- <el-form-item label="id:">
           <el-input v-model="deployMainId" style="width: 120px"></el-input>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="check">检查</el-button>
         </el-form-item>
@@ -64,7 +64,7 @@
         <div v-else>
           <el-tag type="danger">发布可能存在失败，请检查！</el-tag>
           <div class="margin10">
-            点击直达：<a :href="`https://developer.tuhuyun.cn/#/app/${baseParams.appid}/${baseParams.env}/deployment?taskId=${errorItem.taskId}&deployMainId=${errorItem.deployMainId}`" target='_blank'>发布失败站点</a>
+            点击直达：<a href="javascript:;" @click="goToDetail">发布失败站点</a>
           </div>
           <div class="margin10">
             失败节点：{{ errorItem.operation }}
@@ -232,6 +232,10 @@ export default {
       this.errorItem = this.logMap.find(item => {
         return item.result === 'Error'
       })
+    },
+    goToDetail() {
+      let url = `https://developer.tuhuyun.cn/#/app/${this.baseParams.appid}/${this.baseParams.env}/deployment?taskId=${this.errorItem.taskId}&deployMainId=${this.errorItem.deployMainId}`
+      window.open(url, '_blank')
     }
   }
 };

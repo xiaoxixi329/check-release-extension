@@ -8,7 +8,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(({requestHeaders}) => {
   return { requestHeaders }
 }, {
   urls: [
-    'https://developer-bff.tuhuyun.cn/int-service-arch-chuangtzu-base/v1/base/rbac/user/profile/authorized_origin_resource?*'
+    'https://developer-bff.tuhuyun.cn/int-service-arch-chuangtzu-base/v1/base/user/current'
   ],
 }, ["requestHeaders"])
 
